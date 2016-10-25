@@ -2,12 +2,12 @@
  * @Author: dmyang
  * @Date:   2016-10-21 15:10:19
  * @Last Modified by:   dmyang
- * @Last Modified time: 2016-10-21 15:39:07
+ * @Last Modified time: 2016-10-25 16:03:14
  */
 
 'use strict'
 
-import 'babel-polyfill'
+// import 'babel-polyfill'
 import { trigger } from 'redial'
 
 import React from 'react'
@@ -69,7 +69,7 @@ const render = () => {
 const unsubscribeHistory = render()
 
 if (module.hot) {
-    module.hot.accept('../common/routes/root', () => {
+    module.hot.accept('../share/routes/root', () => {
         unsubscribeHistory()
         setTimeout(render)
     })
