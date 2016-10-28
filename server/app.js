@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-10-21 16:26:12
+* @Last Modified time: 2016-10-28 18:52:40
 */
 
 'use strict';
@@ -21,13 +21,13 @@ import serve from 'koa-static'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
-import favicon from 'favicon.ico'
+// import favicon from './favicon.ico'
 
 import webpackConfig from '../tools/webpack.client.dev'
 import { compileDev } from '../tools/dx'
 import { configureStore } from '../share/store'
 import reducer from '../share/createReducer'
-import createRoutes from '../share/routes/root'
+import createRoutes from '../share/routes'
 
 const promiseMatch = (location) => {
     return new Promise((resolve, reject) => {
@@ -41,6 +41,7 @@ const promiseMatch = (location) => {
 }
 
 const App = (config) => {
+    console.log(config || 'sssss')
     const __PROD__ = /production|prod/.test(config.nodeEnv)
     const app = koa()
     const router = kRouter()
@@ -52,17 +53,17 @@ const App = (config) => {
 
     // handle favicon.ico
     app.use(function*(next) {
-        if (this.url.match(/favicon\.ico$/)) this.body = ''
+        if (this.url.match(/favicon\.ico$/)) return this.body = ''
         yield next
     })
 
     // logger
     app.use(function*(next) {
-        console.log(this.method.info, this.url)
+        console.log(this.method, this.url)
         yield next
     })
 
-    if(!__PROD__ && config.hrm) {
+    if(!__PROD__ && config.hmr) {
         const compiler = compileDev((webpack(webpackConfig)), config.port)
         app.use(webpackDevMiddleware(compiler, {
             quiet: true,
@@ -73,12 +74,10 @@ const App = (config) => {
         app.use(webpackHotMiddleware(compiler, { log: console.log }))
     }
 
-    app.use(serve(config.staticDir, {
-        maxage: 0
-    }))
-
     router.get('*', function*(next) {
         yield ((callback) => {
+            this.body = 'sdsds'
+            callback(null);return
             const store = configureStore({
                 sourceRequest: {
                     protocol: this.headers['x-forwarded-proto'] || this.protocol,
@@ -149,6 +148,10 @@ const App = (config) => {
 
     // use routes
     app.use(router.routes()).use(router.allowedMethods())
+
+    app.use(serve(config.staticDir, {
+        maxage: 0
+    }))
 
     return app
 }

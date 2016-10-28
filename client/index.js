@@ -2,7 +2,7 @@
  * @Author: dmyang
  * @Date:   2016-10-21 15:10:19
  * @Last Modified by:   dmyang
- * @Last Modified time: 2016-10-25 16:03:14
+ * @Last Modified time: 2016-10-28 17:45:13
  */
 
 'use strict'
@@ -35,11 +35,11 @@ const render = () => {
     const routes = createRoutes(store)
 
     match({ routes, location }, () => {
-        ReactDOM.render( < Provider store = { store } >
-            < Router routes = { routes }
+        ReactDOM.render( <Provider store = { store }>
+            <Router routes = { routes }
             history = { browserHistory }
             key = { Math.random() }
-            /> < /Provider>,
+            /></Provider>,
             container
         )
     })
