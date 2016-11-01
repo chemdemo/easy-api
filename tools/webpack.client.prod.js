@@ -3,7 +3,10 @@ const webpack = require('webpack')
 const AssetsPlugin = require('assets-webpack-plugin')
 
 const CONFIG = require('./webpack.base')
-const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH } = CONFIG
+const CLIENT_ENTRY = CONFIG.CLIENT_ENTRY
+const CLIENT_OUTPUT = CONFIG.CLIENT_OUTPUT
+const PUBLIC_PATH = CONFIG.PUBLIC_PATH
+// const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH } = CONFIG
 
 module.exports = {
   devtool: false,

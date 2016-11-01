@@ -2,7 +2,10 @@ const path = require('path')
 const webpack = require('webpack')
 const CONFIG = require('./webpack.base')
 
-const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH } = CONFIG
+// const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH } = CONFIG
+const CLIENT_ENTRY = CONFIG.CLIENT_ENTRY
+const CLIENT_OUTPUT = CONFIG.CLIENT_OUTPUT
+const PUBLIC_PATH = CONFIG.PUBLIC_PATH
 
 module.exports = {
   devtool: 'eval',

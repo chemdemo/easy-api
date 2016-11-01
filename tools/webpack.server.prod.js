@@ -3,7 +3,9 @@ const fs =  require('fs')
 const path = require('path')
 
 const CONFIG = require('./webpack.base')
-const { SERVER_ENTRY, SERVER_OUTPUT, PUBLIC_PATH }  = CONFIG
+const SERVER_ENTRY = CONFIG.SERVER_ENTRY
+const SERVER_OUTPUT = CONFIG.SERVER_OUTPUT
+const PUBLIC_PATH = CONFIG.PUBLIC_PATH
 
 function getExternals () {
   const nodeModules = fs.readdirSync(path.join(process.cwd(), 'node_modules'))

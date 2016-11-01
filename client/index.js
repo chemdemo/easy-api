@@ -2,7 +2,7 @@
  * @Author: dmyang
  * @Date:   2016-10-21 15:10:19
  * @Last Modified by:   dmyang
- * @Last Modified time: 2016-10-28 17:45:13
+ * @Last Modified time: 2016-11-01 14:50:25
  */
 
 'use strict'
@@ -19,6 +19,8 @@ import { Provider } from 'react-redux'
 import { StyleSheet } from 'aphrodite'
 
 import { configureStore } from '../share/store'
+import createRoutes from '../share/routes'
+
 const initialState = window.INITIAL_STATE || {}
 const store = configureStore(initialState)
 const { dispatch } = store
@@ -30,8 +32,6 @@ StyleSheet.rehydrate(window.renderedClassNames)
 const render = () => {
     const { pathname, search, hash } = window.location
     const location = `${pathname}${search}${hash}`
-
-    const createRoutes = require('../share/routes/root').default
     const routes = createRoutes(store)
 
     match({ routes, location }, () => {
@@ -69,7 +69,7 @@ const render = () => {
 const unsubscribeHistory = render()
 
 if (module.hot) {
-    module.hot.accept('../share/routes/root', () => {
+    module.hot.accept('../share/routes', () => {
         unsubscribeHistory()
         setTimeout(render)
     })

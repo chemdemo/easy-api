@@ -2,12 +2,12 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-10-28 19:00:11
+* @Last Modified time: 2016-11-01 12:12:30
 */
 
 'use strict'
 
-import 'babel-polyfill'
+// import 'babel-polyfill'
 
 import http from 'http'
 import path from 'path'
@@ -15,10 +15,10 @@ import path from 'path'
 import opn from 'opn'
 
 import { startDev } from '../tools/dx'
-import { App } from './app'
+import App from './app'
 import serverConf from './config'
 
-const staticDir = path.resolve(__dirname, 'public')
+const staticDir = path.resolve(process.cwd(), 'public')
 
 const config = {...serverConf, staticDir}
 const app = App(config)

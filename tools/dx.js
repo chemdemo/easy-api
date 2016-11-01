@@ -2,17 +2,22 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-10-28 17:55:55
+* @Last Modified time: 2016-10-31 16:03:35
 */
 
 'use strict'
 
 // Shamelessly ripped from FB's create-react-app
 
-import chalk from 'chalk'
-import opn from 'opn'
-import { execSync } from 'child_process'
-import path from 'path'
+// import chalk from 'chalk'
+// import opn from 'opn'
+// import { execSync } from 'child_process'
+// import path from 'path'
+
+const chalk = require('chalk')
+const opn = require('opn')
+const execSync = require('child_process').execSync
+const path = require('path')
 
 function clearConsole () {
   process.stdout.write('\x1B[2J\x1B[0f')
