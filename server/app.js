@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-01 15:05:22
+* @Last Modified time: 2016-11-02 16:44:50
 */
 
 'use strict';
@@ -98,7 +98,7 @@ const App = (config) => {
             const { dispatch } = store
 
             match({routes, history}, (err, redirectLocation, renderProps) => {
-                console.log(err, redirectLocation, renderProps)
+                // console.log(err, redirectLocation, renderProps)
                 if (redirectLocation) {
                     this.redirect(redirectLocation.pathname + redirectLocation.search, '/')
                     return
@@ -140,7 +140,7 @@ const App = (config) => {
                                     </script>
                                 </head>
                                 <body>
-                                    <div id="root">${html}</div>
+                                    <div class="root">${html}</div>
                                     <script src="${ __PROD__ ? assets.vendor.js : '/vendor.js' }"></script>
                                     <script async src="${ __PROD__ ? assets.main.js : '/main.js' }" ></script>
                                 </body>
