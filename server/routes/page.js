@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-11-03 11:15:31
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-04 21:24:14
+* @Last Modified time: 2016-11-04 23:50:11
 */
 
 'use strict'
@@ -73,14 +73,18 @@ export default function setupRoutes(router, app) {
                 </Provider>
             )
             const { html, css} = StyleSheetServer.renderStatic(() => ReactDOMServer.renderToString(InitialView))
+            const includeScript = `
+                window.renderedClassNames = ${JSON.stringify(css.renderedClassNames)};
+                window.INITIAL_STATE = ${JSON.stringify(initialState)}
+            `
             const scripts = [__PROD__ ? assets.vendor.js : '/vendor.js', __PROD__ ? assets.main.js : '/main.js']
 
             yield this.render('index', {
                 title: pkg.name,
                 html,
                 aphroditeCSS: css.content,
-                includeScript: `window.renderedClassNames = ${JSON.stringify(css.renderedClassNames)};window.INITIAL_STATE = ${JSON.stringify(initialState)}`,
-                scripts: [__PROD__ ? assets.vendor.js : '/vendor.js', __PROD__ ? assets.main.js : '/main.js']
+                includeScript,
+                scripts
             })
         } catch(e) {
             console.error(e || 'Server intenal error')
