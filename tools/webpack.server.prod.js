@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-01 17:14:24
+* @Last Modified time: 2016-11-04 21:06:27
 */
 
 const webpack = require('webpack')
@@ -10,9 +10,7 @@ const fs = require('fs')
 const path = require('path')
 
 const CONFIG = require('./webpack.base')
-const SERVER_ENTRY = CONFIG.SERVER_ENTRY
-const SERVER_OUTPUT = CONFIG.SERVER_OUTPUT
-const PUBLIC_PATH = CONFIG.PUBLIC_PATH
+const { SERVER_ENTRY, SERVER_OUTPUT, PUBLIC_PATH, LOADERS} = CONFIG
 
 function getExternals() {
     const nodeModules = fs.readdirSync(path.join(process.cwd(), 'node_modules'))
@@ -25,7 +23,7 @@ function getExternals() {
 module.exports = {
     target: 'node',
     devtool: 'inline-source-map',
-    entry: SERVER_ENTRY,
+    entry: [ 'babel-polyfill', SERVER_ENTRY ],
     output: {
         path: SERVER_OUTPUT,
         filename: 'server.js'
@@ -38,15 +36,15 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.json$/,
-            loader: 'json-loader'
+            loader: 'json'
         }, {
-            test: /\.js$/,
-            loader: 'babel-loader',
+            test: /\.jsx?$/,
+            loader: 'babel',
             query: {
-                presets: ["es2015", "react", "stage-0", "react-optimize"],
+                presets: ['es2015', 'react', 'stage-0', 'react-optimize'],
             },
             exclude: /(node_modules)/
-        }, ]
+        }]
     },
     plugins: [
         new webpack.BannerPlugin(

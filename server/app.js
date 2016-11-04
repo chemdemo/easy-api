@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-03 11:36:38
+* @Last Modified time: 2016-11-04 21:28:49
 */
 
 'use strict';
@@ -11,6 +11,7 @@ import http from 'http'
 import path from 'path'
 
 import koa from 'koa'
+import ejs from 'koa-ejs'
 import kRouter from 'koa-router'
 import serve from 'koa-static'
 import webpack from 'webpack'
@@ -19,12 +20,16 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import webpackConfig from '../tools/webpack.client.dev'
 import { compileDev } from '../tools/dx'
-import setupRoutes from './routes'
+import setupPageRoutes from './routes/page'
+import setupAPIRoutes from './routes/api'
 
 const App = (config) => {
     // console.log(config)
     const app = koa()
-    const router = setupRoutes(kRouter(), app)
+    const router = kRouter()
+
+    setupAPIRoutes(router, app)
+    setupPageRoutes(router, app)
 
     app.on('error', (err, ctx) => {
         err.url = err.url || ctx.request.url
@@ -37,15 +42,22 @@ const App = (config) => {
         yield next
     })
 
+    // handler view
+    ejs(app, {
+        root: config.viewpath,
+        viewExt: 'html',
+        layout: false,
+        cache: __PROD__ ? true : false,
+        debug: __PROD__ ? false : true
+    })
+
     // logger
     app.use(function*(next) {
         console.log(this.method, this.url)
         yield next
     })
 
-    app.use(serve(config.staticDir, {
-        maxage: 0
-    }))
+    app.use(serve(config.assetspath, { maxage: 0 }))
 
     if(!__PROD__ && config.hmr) {
         const compiler = compileDev((webpack(webpackConfig)), config.port)
@@ -65,7 +77,7 @@ const App = (config) => {
     }
 
     // use routes
-    app.use(router.routes())//.use(router.allowedMethods())
+    app.use(router.routes())
 
     return app
 }

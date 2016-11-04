@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title><%= title %></title>
+    <style>
+        html, body, h1, h2, h3, h4, h5, h6, p, ul, li, input, button, textarea, section {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            -webkit-user-select: none;
+            user-select: none;
+            overflow-x: hidden;
+        }
+
+        html {
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
+        body {
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        body, input, button, textarea {
+            border: none;
+            outline: none;
+        }
+
+        a, img {
+            -webkit-touch-callout: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            -webkit-user-modify: read-write-plaintext-only;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        .clearfix {
+            content: ' ';
+            display: block;
+            clear: both;
+            overflow: hidden;
+        }
+    </style>
+    <style data-aphrodite><%= aphroditeCSS %></style>
+    <script><%- includeScript %></script>
+</head>
+
+<body>
+    <div id="root"><%- html %></div>
+    <% scripts.forEach(function(url) { %>
+    <script src=<%= url %>></script>
+    <% }) %>
+</body>
+</html>

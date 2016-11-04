@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-01 17:33:10
+* @Last Modified time: 2016-11-04 20:01:39
 */
 
 const path = require('path')
@@ -10,7 +10,7 @@ const path = require('path')
 module.exports = {
     CLIENT_ENTRY: path.join(process.cwd(), 'client'),
     CLIENT_OUTPUT: path.join(process.cwd(), 'public/assets'),
-    SERVER_ENTRY: path.join(process.cwd(), 'server'),
+    SERVER_ENTRY: path.join(process.cwd(), 'server/index.js'),
     SERVER_OUTPUT: path.join(process.cwd(), 'build'),
     PUBLIC_PATH: '/assets/',
     LOADERS: [

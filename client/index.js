@@ -2,7 +2,7 @@
  * @Author: dmyang
  * @Date:   2016-10-21 15:10:19
  * @Last Modified by:   dmyang
- * @Last Modified time: 2016-11-01 14:50:25
+ * @Last Modified time: 2016-11-04 18:33:57
  */
 
 'use strict'
@@ -25,8 +25,6 @@ const initialState = window.INITIAL_STATE || {}
 const store = configureStore(initialState)
 const { dispatch } = store
 
-const container = document.getElementById('root')
-
 StyleSheet.rehydrate(window.renderedClassNames)
 
 const render = () => {
@@ -34,12 +32,13 @@ const render = () => {
     const location = `${pathname}${search}${hash}`
     const routes = createRoutes(store)
 
+    const container = document.getElementById('root')
+
     match({ routes, location }, () => {
-        ReactDOM.render( <Provider store = { store }>
-            <Router routes = { routes }
-            history = { browserHistory }
-            key = { Math.random() }
-            /></Provider>,
+        ReactDOM.render(
+            <Provider store = { store }>
+                <Router routes = { routes } history = { browserHistory } key = { Math.random() }/>
+            </Provider>,
             container
         )
     })

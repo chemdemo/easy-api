@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-21 17:59:28
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-02 16:09:04
+* @Last Modified time: 2016-11-04 20:22:33
 */
 
 'use strict'
@@ -20,7 +20,7 @@ export default function createRoutes(store) {
         getChildRoutes: (location, cb) => {
             require.ensure([], require => {
                 // cb(null, [require('./CreateRule').default(store)])
-                cb(null, [])
+                cb(null, [require('./demo').default])
             })
         },
         indexRoute: {
