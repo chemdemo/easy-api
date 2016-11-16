@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-11-03 11:15:31
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-04 23:50:11
+* @Last Modified time: 2016-11-16 17:09:33
 */
 
 'use strict'
@@ -32,7 +32,7 @@ const promiseMatch = (location) => {
     })
 }
 
-let assets
+let sourcemap
 
 export default function setupRoutes(router, app) {
     router.get('*', function*(next) {
@@ -46,7 +46,7 @@ export default function setupRoutes(router, app) {
         const history = createMemoryHistory(this.url)
         const { dispatch } = store
 
-        if(global.__PROD__) assets = require('../../public/assets/assets.json')
+        if(global.__PROD__) sourcemap = require('../../public/assets/sourcemap.json')
 
         try {
             const r = yield promiseMatch({ routes, history })
@@ -77,7 +77,7 @@ export default function setupRoutes(router, app) {
                 window.renderedClassNames = ${JSON.stringify(css.renderedClassNames)};
                 window.INITIAL_STATE = ${JSON.stringify(initialState)}
             `
-            const scripts = [__PROD__ ? assets.vendor.js : '/vendor.js', __PROD__ ? assets.main.js : '/main.js']
+            const scripts = [__PROD__ ? sourcemap.vendor.js : '/vendor.js', __PROD__ ? sourcemap.main.js : '/main.js']
 
             yield this.render('index', {
                 title: pkg.name,

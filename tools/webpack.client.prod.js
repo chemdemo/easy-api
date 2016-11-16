@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-04 19:34:29
+* @Last Modified time: 2016-11-16 17:09:15
 */
 
 const path = require('path')
@@ -39,7 +39,7 @@ module.exports = {
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor_[hash].js', 2),
-        new AssetsPlugin({ filename: path.resolve(CLIENT_OUTPUT, 'assets.json') }),
+        new AssetsPlugin({ filename: path.resolve(CLIENT_OUTPUT, 'sourcemap.json') }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
