@@ -47,6 +47,7 @@
     "hpp": "^0.2.0",
     "json-loader": "^0.5.4",
     "koa": "^1.2.4",
+    "koa-ejs": "^3.0.0",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
     "koa-webpack-dev-middleware": "^1.2.2",
