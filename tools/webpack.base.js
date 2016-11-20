@@ -2,10 +2,11 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-04 20:01:39
+* @Last Modified time: 2016-11-20 01:16:09
 */
 
 const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
     CLIENT_ENTRY: path.join(process.cwd(), 'client'),
@@ -25,7 +26,7 @@ module.exports = {
             test: /\.((ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9]))|(ttf|eot)$/,
             loader: 'url?limit=10000&name=fonts/[hash:8].[name].[ext]'
         },
-        {test: /\.css$/, loader: ['style', 'css']},
-        {test: /\.scss$/, loader: ['style', 'css', 'sass']},
+        {test: /\.css$/, loader: 'style!css'},
+        {test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass')},
     ]
 }

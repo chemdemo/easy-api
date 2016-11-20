@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-04 21:28:49
+* @Last Modified time: 2016-11-18 18:21:48
 */
 
 'use strict';
@@ -59,11 +59,12 @@ const App = (config) => {
 
     app.use(serve(config.assetspath, { maxage: 0 }))
 
-    if(!__PROD__ && config.hmr) {
+    if(__DEV__ && config.hmr) {
         const compiler = compileDev((webpack(webpackConfig)), config.port)
-        const hotMiddleware = webpackHotMiddleware(compiler)
+        const hotMiddleware = webpackHotMiddleware(compiler, { noInfo: true, quiet: true })
 
         app.use(koaWebpackDevMiddleware(compiler, {
+            noInfo: true,
             quiet: true,
             watchOptions: {
                 ignored: /node_modules/

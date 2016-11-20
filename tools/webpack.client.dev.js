@@ -1,13 +1,15 @@
 /*
-* @Author: dmyang
-* @Date:   2016-10-11 17:56:02
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-01 17:14:20
-*/
+ * @Author: dmyang
+ * @Date:   2016-10-11 17:56:02
+ * @Last Modified by:   dmyang
+ * @Last Modified time: 2016-11-20 01:14:19
+ */
 
 const path = require('path')
 const webpack = require('webpack')
 const CONFIG = require('./webpack.base')
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH, LOADERS } = CONFIG
 
@@ -16,7 +18,7 @@ module.exports = {
     entry: {
         main: [
             'webpack/hot/only-dev-server',
-            'webpack-hot-middleware/client',
+            'webpack-hot-middleware/client?reload=true&quiet=true&noInfo=true',
             CLIENT_ENTRY
         ],
         vendor: [
@@ -41,15 +43,20 @@ module.exports = {
             loader: 'standard',
             exclude: /(node_modules)/
         }],
-        loaders: [{
-            test: /\.js$/,
-            loader: 'babel',
-            exclude: /(node_modules|server)/,
-            query: {
-                cacheDirectory: true,
-                presets: ["es2015", "react", "stage-0"]
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel',
+                exclude: /(node_modules|server)/,
+                query: {
+                    cacheDirectory: true,
+                    presets: ['es2015', 'react', 'stage-0']
+                }
             }
-        }].concat(LOADERS)
+        ].concat(LOADERS)
+    },
+    resolve: {
+        modulesDirectories: ['node_modules']
     },
     standard: {
         // config options to be passed through to standard e.g.
@@ -62,6 +69,7 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', 2),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new ExtractTextPlugin('[name].css')
     ],
 }

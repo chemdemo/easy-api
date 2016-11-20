@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-11-03 11:15:31
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-16 17:09:33
+* @Last Modified time: 2016-11-17 17:22:19
 */
 
 'use strict'
@@ -24,7 +24,7 @@ const pkg = require('../../package.json')
 const promiseMatch = (location) => {
     return new Promise((resolve, reject) => {
         match(location, (err, redirectLocation, renderProps) => {
-            if(err) return reject({ err })
+            if(err) return reject(err)
             if(redirectLocation) return resolve({ redirectLocation })
             if(renderProps) return resolve({ renderProps })
             reject()
@@ -87,9 +87,14 @@ export default function setupRoutes(router, app) {
                 scripts
             })
         } catch(e) {
-            console.error(e || 'Server intenal error')
-            this.status = 500
-            this.body = e ? e.stack : 'Server intenal error'
+            if(!e) {
+                // 404
+                yield next
+            } else {
+                console.error(e)
+                this.status = 500
+                this.body = e.stack
+            }
         }
     })
 

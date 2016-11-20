@@ -2,7 +2,7 @@
  * @Author: dmyang
  * @Date:   2016-10-21 15:10:19
  * @Last Modified by:   dmyang
- * @Last Modified time: 2016-11-04 18:33:57
+ * @Last Modified time: 2016-11-20 00:15:41
  */
 
 'use strict'
@@ -56,6 +56,8 @@ const render = () => {
                 // Allow lifecycle hooks to dispatch Redux actions:
                 dispatch
             }
+
+            console.info('INITIAL_STATE', INITIAL_STATE)
 
             if (window.INITIAL_STATE) delete window.INITIAL_STATE
             else trigger('fetch', components, locals)
