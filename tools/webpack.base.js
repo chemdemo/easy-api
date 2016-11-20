@@ -1,12 +1,14 @@
 /*
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-20 01:16:09
+* @Last Modified by:   chemdemo
+* @Last Modified time: 2016-11-20 16:50:24
 */
 
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const extractCSS = new ExtractTextPlugin('[name].css?[contenthash]')
 
 module.exports = {
     CLIENT_ENTRY: path.join(process.cwd(), 'client'),
@@ -26,7 +28,7 @@ module.exports = {
             test: /\.((ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9]))|(ttf|eot)$/,
             loader: 'url?limit=10000&name=fonts/[hash:8].[name].[ext]'
         },
-        {test: /\.css$/, loader: 'style!css'},
-        {test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass')},
+        {test: /\.css$/, loader: extractCSS.extract('style', ['css'])},
+        {test: /\.scss$/, loader: extractCSS.extract('style', ['css', 'sass'])},
     ]
 }

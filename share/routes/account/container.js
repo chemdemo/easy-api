@@ -1,17 +1,11 @@
 /*
 * @Author: dmyang
 * @Date:   2016-11-17 11:37:04
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-20 01:17:41
+* @Last Modified by:   chemdemo
+* @Last Modified time: 2016-11-20 16:18:19
 */
 
 'use strict'
-
-// @see https://github.com/jaredpalmer/react-production-starter/issues/34
-if(typeof window !== 'undefined') {
-    require('antd/dist/antd.css')
-    require('../../scss/account.scss')
-}
 
 import { provideHooks } from 'redial'
 import React, { Component } from 'react'
