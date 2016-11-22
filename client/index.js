@@ -2,7 +2,7 @@
  * @Author: dmyang
  * @Date:   2016-10-21 15:10:19
  * @Last Modified by:   chemdemo
- * @Last Modified time: 2016-11-20 17:40:27
+ * @Last Modified time: 2016-11-23 00:53:31
  */
 
 'use strict'
@@ -26,9 +26,6 @@ const store = configureStore(initialState)
 const { dispatch } = store
 
 StyleSheet.rehydrate(window.renderedClassNames)
-
-import 'antd/dist/antd.css'
-// require('../scss/account.scss')
 
 const render = () => {
     const { pathname, search, hash } = window.location

@@ -1,14 +1,16 @@
 /*
 * @Author: dmyang
 * @Date:   2016-11-02 16:55:15
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-02 19:14:49
+* @Last Modified by:   chemdemo
+* @Last Modified time: 2016-11-23 00:52:20
 */
 
 'use strict'
 
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
+
+if(typeof window !== 'undefined') require('antd/dist/antd.css')
 
 class View extends Component {
     render() {

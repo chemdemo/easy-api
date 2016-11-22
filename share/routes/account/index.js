@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-11-17 11:20:59
 * @Last Modified by:   chemdemo
-* @Last Modified time: 2016-11-20 18:01:02
+* @Last Modified time: 2016-11-23 00:58:36
 */
 
 'use strict'
@@ -15,7 +15,8 @@ export default store => {
     return {
         path: 'account/login',
         getComponents: (location, cb) => {
-            // require('../../scss/account.scss')
+            // console.log('state', store.getState())
+            console.log(location)
             require.ensure(['./container'], require => {
                 let loginView = require('./container').default
                 let loginReducer = require('./reducer').default
@@ -25,9 +26,9 @@ export default store => {
                 injectAsyncReducer(store, 'account', loginReducer)
 
                  // @see https://github.com/jaredpalmer/react-production-starter/issues/34
-                if(typeof window !== 'undefined') {
-                    require('../../scss/account.scss')
-                }
+                // if(typeof window !== 'undefined') {
+                //     require('../../scss/account.scss')
+                // }
 
                 cb(null, loginView)
             })
