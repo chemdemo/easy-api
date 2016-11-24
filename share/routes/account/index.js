@@ -1,8 +1,8 @@
 /*
 * @Author: dmyang
 * @Date:   2016-11-17 11:20:59
-* @Last Modified by:   chemdemo
-* @Last Modified time: 2016-11-23 00:58:36
+* @Last Modified by:   yangdemo
+* @Last Modified time: 2016-11-24 21:48:10
 */
 
 'use strict'
@@ -12,11 +12,13 @@ if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
 import { injectAsyncReducer } from '../../store'
 
 export default store => {
+    if(typeof window !== 'undefined') require('../../scss/account.scss')
+
     return {
         path: 'account/login',
         getComponents: (location, cb) => {
             // console.log('state', store.getState())
-            console.log(location)
+            // console.log(location)
             require.ensure(['./container'], require => {
                 let loginView = require('./container').default
                 let loginReducer = require('./reducer').default
@@ -25,10 +27,8 @@ export default store => {
                 // injectAsyncReducer即动态插入state key的reducer
                 injectAsyncReducer(store, 'account', loginReducer)
 
-                 // @see https://github.com/jaredpalmer/react-production-starter/issues/34
-                // if(typeof window !== 'undefined') {
-                //     require('../../scss/account.scss')
-                // }
+                // @see https://github.com/jaredpalmer/react-production-starter/issues/34
+                // if(typeof window !== 'undefined') require('../../scss/account.scss')
 
                 cb(null, loginView)
             })

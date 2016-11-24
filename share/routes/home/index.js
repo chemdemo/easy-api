@@ -11,7 +11,16 @@ import React, { Component, PropTypes } from 'react'
 
 class View extends Component {
     render() {
-        return <div>Helloworld</div>
+        return (
+        	<div>
+        		<header>
+                    <nav>
+                        <a href="#">规则列表</a>
+                    </nav>
+                </header>
+                <div>Hello world</div>
+        	</div>
+        )
     }
 }
 

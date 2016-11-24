@@ -1,0 +1,70 @@
+/*
+* @Author: dmyang
+* @Date:   2016-11-20 01:10:13
+* @Last Modified by:   dmyang
+* @Last Modified time: 2016-11-23 17:45:24
+*/
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, li, input, button, textarea, section {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    -webkit-user-select: none;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+body, input, button, textarea {
+    border: none;
+    outline: none;
+}
+
+a, img {
+    -webkit-touch-callout: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-user-modify: read-write-plaintext-only;
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.none {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.clearfix {
+    content: ' ';
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+footer {
+    text-align: center;
+}

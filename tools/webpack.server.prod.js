@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-04 21:06:27
+* @Last Modified time: 2016-11-23 14:55:16
 */
 
 const webpack = require('webpack')
@@ -41,7 +41,7 @@ module.exports = {
             test: /\.jsx?$/,
             loader: 'babel',
             query: {
-                presets: ['es2015', 'react', 'stage-0', 'react-optimize'],
+                presets: ['es2015', 'react', 'stage-0', 'react-optimize']
             },
             exclude: /(node_modules)/
         }]

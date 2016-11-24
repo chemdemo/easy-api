@@ -1,8 +1,8 @@
 /*
 * @Author: dmyang
 * @Date:   2016-11-17 11:37:04
-* @Last Modified by:   chemdemo
-* @Last Modified time: 2016-11-20 16:18:19
+* @Last Modified by:   dmyang
+* @Last Modified time: 2016-11-23 17:43:15
 */
 
 'use strict'
@@ -13,6 +13,7 @@ import { connect } from 'react-redux'
 import { render } from 'react-dom'
 // also see https://github.com/visionmedia/superagent
 import reqwest from 'reqwest'
+import { css } from 'aphrodite'
 
 // 按需加载
 import Form from 'antd/lib/form'
@@ -24,6 +25,7 @@ import message from 'antd/lib/message'
 
 import { login } from './actions'
 import { selectAccount } from './reducer'
+import styles from './styles'
 
 const FormItem = Form.Item
 
@@ -100,7 +102,7 @@ class View extends Component {
         }
 
         return (
-            <Form horizontal>
+            <Form horizontal className={css(styles.form)}>
                 <FormItem label="账户：" hasFeedback {...formItemLayout}>
                     <Input placeholder="请输入OA账号" defaultValue={ name }
                         addonAfter="@meizu.com"
@@ -108,8 +110,8 @@ class View extends Component {
                     />
                 </FormItem>
                 <FormItem label="密码：" hasFeedback {...formItemLayout}>
-                    <Input type="password" defaultValue="CHEMydm1633"
-                        placeholder="请输入OA密码"
+                    <Input type="password"
+                        placeholder="请输入密码"
                         {...pswdProps}
                     />
                 </FormItem>

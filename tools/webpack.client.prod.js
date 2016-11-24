@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-16 17:09:15
+* @Last Modified time: 2016-11-23 14:55:09
 */
 
 const path = require('path')
@@ -62,7 +62,7 @@ module.exports = {
             loader: 'babel',
             query: {
                 cacheDirectory: true,
-                presets: ["es2015", "react", "stage-0", "react-optimize"],
+                presets: ["es2015", "react", "stage-0", "react-optimize"]
             },
             exclude: /(node_modules)/
         }].concat(LOADERS)
