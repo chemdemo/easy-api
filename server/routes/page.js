@@ -1,8 +1,8 @@
 /*
 * @Author: dmyang
 * @Date:   2016-11-03 11:15:31
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-17 17:22:19
+* @Last Modified by:   yangdemo
+* @Last Modified time: 2016-11-29 20:02:21
 */
 
 'use strict'
@@ -12,7 +12,7 @@ import ReactDOMServer from 'react-dom/server'
 import { createMemoryHistory, RouterContext, match } from 'react-router'
 import { Provider } from 'react-redux'
 import { trigger } from 'redial'
-import { StyleSheetServer } from 'aphrodite'
+import { StyleSheetServer } from 'aphrodite/no-important'
 
 import { compileDev } from '../../tools/dx'
 import { configureStore } from '../../share/store'
@@ -32,9 +32,9 @@ const promiseMatch = (location) => {
     })
 }
 
-let sourcemap
-
 export default function setupRoutes(router, app) {
+    const sourcemap = __PROD__ ? require('../../public/assets/sourcemap.json') : {}
+
     router.get('*', function*(next) {
         const store = configureStore({
             sourceRequest: {
@@ -45,8 +45,6 @@ export default function setupRoutes(router, app) {
         const routes = createRoutes(store)
         const history = createMemoryHistory(this.url)
         const { dispatch } = store
-
-        if(global.__PROD__) sourcemap = require('../../public/assets/sourcemap.json')
 
         try {
             const r = yield promiseMatch({ routes, history })
@@ -72,11 +70,12 @@ export default function setupRoutes(router, app) {
                     <RouterContext {...r.renderProps} />
                 </Provider>
             )
-            const { html, css} = StyleSheetServer.renderStatic(() => ReactDOMServer.renderToString(InitialView))
+            const { html, css } = StyleSheetServer.renderStatic(() => ReactDOMServer.renderToString(InitialView))
             const includeScript = `
                 window.renderedClassNames = ${JSON.stringify(css.renderedClassNames)};
                 window.INITIAL_STATE = ${JSON.stringify(initialState)}
             `
+            const links = [__PROD__ ? sourcemap.main.css : '/main.css']
             const scripts = [__PROD__ ? sourcemap.vendor.js : '/vendor.js', __PROD__ ? sourcemap.main.js : '/main.js']
 
             yield this.render('index', {
@@ -84,6 +83,7 @@ export default function setupRoutes(router, app) {
                 html,
                 aphroditeCSS: css.content,
                 includeScript,
+                links,
                 scripts
             })
         } catch(e) {
