@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="/main.css" />
+    <% links.forEach(function(url) { %>
+    <link rel="stylesheet" href=<%= url %> />
+    <% }) %>
     <style data-aphrodite><%= aphroditeCSS %></style>
     <script><%- includeScript %></script>
 </head>

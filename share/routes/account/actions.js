@@ -1,13 +1,13 @@
 /*
  * @Author: dmyang
  * @Date:   2016-11-19 22:57:37
- * @Last Modified by:   dmyang
- * @Last Modified time: 2016-11-20 00:16:55
+ * @Last Modified by:   yangdemo
+ * @Last Modified time: 2016-11-29 16:16:58
  */
 
 'use strict'
 
-const LOGIN_URI = '/api/account/login'
+const LOGIN_URI = 'http://localhost:4000/api/account/login'
 
 import { LOAD_ACCOUNT_REQUEST, LOAD_ACCOUNT_SUCCESS, LOAD_ACCOUNT_FAILURE } from '../../constants'
 
@@ -21,14 +21,14 @@ export function login() {
             .then(res => {
                 dispatch({
                     type: LOAD_ACCOUNT_SUCCESS,
-                    name: 'dmyang'
+                    name: res.data.account.name
                 })
             })
             .catch(error => {
                 console.error(`Error in reducer that handles ${LOAD_ACCOUNT_FAILURE}: `, error)
                 dispatch({
                     type: LOAD_ACCOUNT_FAILURE,
-                    name: 'dmyang-err'
+                    name: 'unlogin'
                 })
             })
     }

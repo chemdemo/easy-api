@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-11-17 11:20:59
 * @Last Modified by:   yangdemo
-* @Last Modified time: 2016-11-24 21:48:10
+* @Last Modified time: 2016-11-29 16:33:08
 */
 
 'use strict'
@@ -12,7 +12,7 @@ if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
 import { injectAsyncReducer } from '../../store'
 
 export default store => {
-    if(typeof window !== 'undefined') require('../../scss/account.scss')
+    // if(typeof window !== 'undefined') require('../../scss/account.scss')
 
     return {
         path: 'account/login',
