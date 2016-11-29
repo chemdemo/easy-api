@@ -3,20 +3,17 @@
   "version": "0.1.0",
   "description": "Api mock server built with Node.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test ./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive",
-    "test:watch": "npm test -- --watch",
-    "coverage": "nyc npm test",
     "start:dev": "NODE_ENV=development babel-node ./server",
     "start:prod": "NODE_ENV=production node ./build/server.js",
     "build": "webpack -p --config ./tools/webpack.client.prod.js && webpack -p --config ./tools/webpack.server.prod.js",
-    "clean": "rm -rf build"
+    "clean": "gulp clean"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chemdemo/easy-api.git"
   },
   "keywords": [],
-  "author": "chemdemo",
+  "author": "dmyang",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chemdemo/easy-api/issues"
@@ -24,7 +21,7 @@
   "homepage": "https://github.com/chemdemo/easy-api#readme",
   "dependencies": {
     "antd": "^2.2.0",
-    "aphrodite": "^0.5.0",
+    "aphrodite": "^1.1.0",
     "assets-webpack-plugin": "^3.3.0",
     "axios": "^0.14.0",
     "babel-core": "^6.9.1",
@@ -43,7 +40,9 @@
     "cross-env": "2.0.1",
     "eslint-config-standard": "^6.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
-    "helmet": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-util": "^3.0.7",
     "history": "^4.0.0",
     "hpp": "^0.2.0",
     "json-loader": "^0.5.4",
@@ -57,8 +56,8 @@
     "morgan": "^1.6.1",
     "mysql": "^2.12.0",
     "opn": "^4.0.2",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "react-helmet": "^3.1.0",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
