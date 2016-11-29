@@ -1,8 +1,8 @@
 /*
  * @Author: dmyang
  * @Date:   2016-10-21 15:10:19
- * @Last Modified by:   chemdemo
- * @Last Modified time: 2016-11-23 00:53:31
+ * @Last Modified by:   yangdemo
+ * @Last Modified time: 2016-11-29 20:40:24
  */
 
 'use strict'
@@ -16,7 +16,7 @@ import Router from 'react-router/lib/Router'
 import match from 'react-router/lib/match'
 import browserHistory from 'react-router/lib/browserHistory'
 import { Provider } from 'react-redux'
-import { StyleSheet } from 'aphrodite'
+import { StyleSheet } from 'aphrodite/no-important'
 
 import { configureStore } from '../share/store'
 import createRoutes from '../share/routes'
