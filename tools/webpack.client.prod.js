@@ -1,16 +1,19 @@
 /*
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-11-23 14:55:09
+* @Last Modified by:   yangdemo
+* @Last Modified time: 2016-11-29 20:37:40
 */
 
 const path = require('path')
 const webpack = require('webpack')
 const AssetsPlugin = require('assets-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const CONFIG = require('./webpack.base')
 const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH, LOADERS} = CONFIG
+
+const extractCSS = new ExtractTextPlugin('[name]_[contenthash:20].css')
 
 module.exports = {
     devtool: false,
@@ -36,6 +39,7 @@ module.exports = {
             'process.env.NODE_ENV': '"production"',
             '__DEV__': false
         }),
+        extractCSS,
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor_[hash].js', 2),
@@ -57,14 +61,18 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
     ],
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loader: 'babel',
-            query: {
-                cacheDirectory: true,
-                presets: ["es2015", "react", "stage-0", "react-optimize"]
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel',
+                query: {
+                    cacheDirectory: true,
+                    presets: ["es2015", "react", "stage-0", "react-optimize"]
+                },
+                exclude: /(node_modules)/
             },
-            exclude: /(node_modules)/
-        }].concat(LOADERS)
+            {test: /\.css$/, loader: extractCSS.extract('style', ['css'])},
+            {test: /\.scss$/, loader: extractCSS.extract('style', ['css', 'sass'])}
+        ]
     }
 }

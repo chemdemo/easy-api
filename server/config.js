@@ -1,18 +1,22 @@
 /*
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
-* @Last Modified by:   chemdemo
-* @Last Modified time: 2016-11-20 17:47:37
+* @Last Modified by:   yangdemo
+* @Last Modified time: 2016-11-29 20:36:20
 */
 
 'use strict'
 
 import path from 'path'
 
+const env = process.env.NODE_ENV || 'development'
+
+global.__PROD__ = /production|prod/.test(env)
+global.__DEV__ = /development|dev/.test(env)
+
 module.exports = {
-    env: process.env.NODE_ENV || 'development',
     host: '0.0.0.0',
-    port: process.env.PORT || 4000,
+    port: process.env.PORT || (__PROD__ ? 5000 : 4000),
     timeout: 29000,
     hmr: true,
     mysql: {

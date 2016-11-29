@@ -1,8 +1,8 @@
 /*
  * @Author: dmyang
  * @Date:   2016-10-11 17:56:02
- * @Last Modified by:   dmyang
- * @Last Modified time: 2016-11-23 14:58:00
+ * @Last Modified by:   yangdemo
+ * @Last Modified time: 2016-11-29 20:37:48
  */
 
 const path = require('path')
@@ -13,7 +13,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH, LOADERS } = CONFIG
 
-const extractCSS = new ExtractTextPlugin('[name].css?[contenthash]')
+const extractCSS = new ExtractTextPlugin('[name].css?[contenthash:20]')
 
 module.exports = {
     devtool: 'eval',
