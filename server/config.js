@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-10-11 17:56:02
 * @Last Modified by:   yangdemo
-* @Last Modified time: 2016-11-29 20:36:20
+* @Last Modified time: 2016-11-30 15:31:02
 */
 
 'use strict'
@@ -28,9 +28,9 @@ module.exports = {
         root: path.resolve(__dirname, 'logs'),
         appenders: [
             {type: 'console', category: 'daily'},
-            {type: 'console', category: 'mysql'},
+            {type: 'console', category: 'mongodb'},
             // {type: 'file', category: 'daily', filename: 'daily.log', maxLogSize: 1024000, backups: 3},
-            // {type: 'file', category: 'mysql', filename: 'mysql.log', maxLogSize: 1024000, backups: 5},
+            // {type: 'file', category: 'mongodb', filename: 'mongodb.log', maxLogSize: 1024000, backups: 5},
         ]
     }
 }
