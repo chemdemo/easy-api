@@ -2,14 +2,14 @@
 * @Author: yangdemo
 * @Date:   2016-11-29 15:53:34
 * @Last Modified by:   yangdemo
-* @Last Modified time: 2016-11-29 17:26:21
+* @Last Modified time: 2016-12-02 11:54:19
 */
 
 'use strict'
 
 // @see https://github.com/Khan/aphrodite/pull/95
 
-import { StyleSheet } from 'aphrodite/no-important'
+import { StyleSheet } from 'aphrodite'
 
 const globalExtension = {
     selectorHandler: (selector, _, generateSubtreeStyles) => {

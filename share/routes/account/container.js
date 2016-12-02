@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-11-17 11:37:04
 * @Last Modified by:   yangdemo
-* @Last Modified time: 2016-11-29 20:30:02
+* @Last Modified time: 2016-12-01 17:54:35
 */
 
 'use strict'
@@ -10,7 +10,6 @@
 import { provideHooks } from 'redial'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { render } from 'react-dom'
 // also see https://github.com/visionmedia/superagent
 import reqwest from 'reqwest'
 // import { StyleSheet, css } from 'aphrodite/no-important'
@@ -36,6 +35,8 @@ const redial = {
 }
 
 const mapStateToProps = state => ({account: selectAccount(state)})
+
+const LOGIN_URI = '/api/account/login'
 
 message.config({
     top: 600

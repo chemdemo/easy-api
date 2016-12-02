@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-11-03 11:15:31
 * @Last Modified by:   yangdemo
-* @Last Modified time: 2016-11-29 20:02:21
+* @Last Modified time: 2016-12-02 18:11:43
 */
 
 'use strict'
@@ -36,7 +36,10 @@ export default function setupRoutes(router, app) {
     const sourcemap = __PROD__ ? require('../../public/assets/sourcemap.json') : {}
 
     router.get('*', function*(next) {
+        // const username = this.cookie.get('uid') || ''
+        const username = 'admin'
         const store = configureStore({
+            username,
             sourceRequest: {
                 protocol: this.headers['x-forwarded-proto'] || this.protocol,
                 host: this.headers.host
