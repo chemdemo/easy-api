@@ -1,8 +1,8 @@
 /*
 * @Author: dmyang
 * @Date:   2016-11-17 11:37:04
-* @Last Modified by:   yangdemo
-* @Last Modified time: 2016-12-01 17:54:35
+* @Last Modified by:   chemdemo
+* @Last Modified time: 2016-12-11 20:40:00
 */
 
 'use strict'
@@ -108,7 +108,7 @@ class View extends Component {
             <Form horizontal className={css(styles.form)}>
                 <FormItem label="账户：" hasFeedback {...formItemLayout}>
                     <Input placeholder="请输入OA账号" defaultValue={ name }
-                        addonAfter="@meizu.com"
+                        addonAfter="@xx.com"
                         {...accountProps}
                     />
                 </FormItem>

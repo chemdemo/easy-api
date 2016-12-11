@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-11-04 21:26:33
 * @Last Modified by:   chemdemo
-* @Last Modified time: 2016-12-11 21:29:21
+* @Last Modified time: 2016-12-11 21:39:55
 */
 
 'use strict'
@@ -18,7 +18,7 @@ export default function setupRoutes(router, app) {
     	this.body = {code: 200, result: {name: 'guest'}}
     })
 
-    router.get('/api/project/', function*() {
+    router.get('/api/project/get-conf', function*() {
         this.body = {code: 200, result: {name: 'test', owner: 'guest', members: ['guest2']}}
     })
 }
