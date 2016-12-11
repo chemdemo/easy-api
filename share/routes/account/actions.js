@@ -1,8 +1,8 @@
 /*
  * @Author: dmyang
  * @Date:   2016-11-19 22:57:37
- * @Last Modified by:   yangdemo
- * @Last Modified time: 2016-11-29 16:16:58
+ * @Last Modified by:   chemdemo
+ * @Last Modified time: 2016-12-11 21:29:43
  */
 
 'use strict'
@@ -21,7 +21,7 @@ export function login() {
             .then(res => {
                 dispatch({
                     type: LOAD_ACCOUNT_SUCCESS,
-                    name: res.data.account.name
+                    name: res.data.result.name
                 })
             })
             .catch(error => {
