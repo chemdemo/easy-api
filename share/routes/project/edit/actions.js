@@ -1,15 +1,15 @@
 /*
 * @Author: chemdemo
 * @Date:   2016-12-11 21:22:33
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-12-14 20:39:01
+* @Last Modified by:   chemdemo
+* @Last Modified time: 2016-12-11 21:53:54
 */
 
 'use strict'
 
-const FETCH_PROJECT_URI = 'http://localhost:4000/api/project/list'
+const FETCH_PROJECT_URI = 'http://localhost:4000/api/project/get-conf'
 
-export function fetchProjects() {
+export function fetchProject() {
     return (dispatch, getState, { axios }) => {
         const { protocol, host } = getState().sourceRequest
 

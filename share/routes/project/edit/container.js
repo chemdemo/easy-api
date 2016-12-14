@@ -2,7 +2,7 @@
 * @Author: chemdemo
 * @Date:   2016-12-11 20:56:54
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-12-14 20:42:32
+* @Last Modified time: 2016-12-14 20:43:02
 */
 
 'use strict'
@@ -12,16 +12,16 @@ import { connect } from 'react-redux'
 // import Table from 'antd/lib/table'
 // import Icon from 'antd/lib/icon'
 
-import Header from '../../components/Header'
-import Content from '../../components/Content'
+import Header from '../../../components/Header'
+import Content from '../../../components/Content'
 
-import { fetchProjects } from './actions'
+import { fetchProject } from './actions'
 
 const redial = {
-    fetch: ({ dispatch }) => dispatch(fetchProjects())
+    fetch: ({ dispatch }) => dispatch(fetchProject())
 }
-const selectProjects = state => state.projects
-const mapStateToProps = state => ({projects: selectProjects(state)})
+const selectProject = state => state.project
+const mapStateToProps = state => ({project: selectProject(state)})
 
 class View extends Component {
     render() {
@@ -30,7 +30,7 @@ class View extends Component {
             <div>
                 <Header />
                 <Content>
-                    <div>project列表</div>
+                    <div>配置project</div>
                 </Content>
             </div>
         )
