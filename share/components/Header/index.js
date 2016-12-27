@@ -1,8 +1,8 @@
 /*
 * @Author: yangdemo
 * @Date:   2016-12-01 17:52:44
-* @Last Modified by:   yangdemo
-* @Last Modified time: 2016-12-02 16:35:37
+* @Last Modified by:   dmyang
+* @Last Modified time: 2016-12-27 20:38:13
 */
 
 'use strict'
@@ -36,8 +36,8 @@ class Header extends Component {
         )
 
         return (
-            <header className={css(styles.header)}>
-                <h1 className={css(styles.title)}>Easy API</h1>
+            <header>
+                <h1 className={css(styles.title)}><Link to="/">Easy API</Link></h1>
                 <div className={css(styles.account)}>
                     <Dropdown overlay={menu} trigger={['click']}>
                         <a className="ant-dropdown-link" href="javascript:void(0)">
@@ -48,10 +48,10 @@ class Header extends Component {
                 </div>
                 <Menu mode="horizontal" className={css(styles.menu)}>
                     <Menu.Item key="create-proj">
-                        <Link to="/project/create">新建项目</Link>
+                        <Link to="/project">新建项目</Link>
                     </Menu.Item>
-                    <Menu.Item key="create-rule">
-                        <Link to="/rule/create">新建接口</Link>
+                    <Menu.Item key="create-api">
+                        <Link to="/api">新建接口</Link>
                     </Menu.Item>
                 </Menu>
             </header>

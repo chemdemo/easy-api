@@ -2,7 +2,7 @@
 * @Author: chemdemo
 * @Date:   2016-12-11 20:56:42
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-12-14 20:44:47
+* @Last Modified time: 2016-12-27 20:26:59
 */
 
 'use strict'
@@ -19,9 +19,9 @@ export default store => {
             require.ensure([], require => {
                 cb(null, require('./edit').default(store))
             })
-        }
+        },
 
-        getComponent(location, cb) => {
+        getComponent(location, cb) {
             // project list
             require.ensure([], require => {
                 let projectListView = require('./container').default

@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2016-12-14 20:34:57
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-12-14 20:44:02
+* @Last Modified time: 2016-12-27 20:34:20
 */
 
 'use strict'
@@ -13,9 +13,9 @@ import { injectAsyncReducer } from '../../../store'
 
 export default store => {
     return {
-        path: 'edit/:projectId?',
+        path: ':projectId',
 
-        getComponent(location, cb) => {
+        getComponent(location, cb) {
             // project list
             require.ensure(['./container'], require => {
                 let projectView = require('./container').default

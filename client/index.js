@@ -1,8 +1,8 @@
 /*
  * @Author: dmyang
  * @Date:   2016-10-21 15:10:19
- * @Last Modified by:   yangdemo
- * @Last Modified time: 2016-12-02 11:54:31
+ * @Last Modified by:   dmyang
+ * @Last Modified time: 2016-12-27 20:40:22
  */
 
 'use strict'
@@ -57,7 +57,7 @@ const render = () => {
                 dispatch
             }
 
-            console.info('INITIAL_STATE', INITIAL_STATE)
+            if (window.INITIAL_STATE) console.info('INITIAL_STATE', INITIAL_STATE)
 
             if (window.INITIAL_STATE) delete window.INITIAL_STATE
             else trigger('fetch', components, locals)

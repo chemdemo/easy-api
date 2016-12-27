@@ -1,8 +1,8 @@
 /*
 * @Author: yangdemo
 * @Date:   2016-12-01 18:02:56
-* @Last Modified by:   yangdemo
-* @Last Modified time: 2016-12-02 17:03:12
+* @Last Modified by:   dmyang
+* @Last Modified time: 2016-12-27 20:18:08
 */
 
 'use strict'
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         'margin-right': '20px'
     },
     menu: {
-        'border-bottom': 'none',
         'background-color': 'transparent',
     },
     account: {

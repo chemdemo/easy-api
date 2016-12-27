@@ -2,11 +2,12 @@
 * @Author: chemdemo
 * @Date:   2016-12-11 20:56:54
 * @Last Modified by:   dmyang
-* @Last Modified time: 2016-12-14 20:43:02
+* @Last Modified time: 2016-12-27 20:37:01
 */
 
 'use strict'
 
+import { provideHooks } from 'redial'
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 // import Table from 'antd/lib/table'

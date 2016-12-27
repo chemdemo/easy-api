@@ -1,8 +1,8 @@
 /*
 * @Author: dmyang
 * @Date:   2016-10-21 17:59:28
-* @Last Modified by:   yangdemo
-* @Last Modified time: 2016-12-02 18:06:34
+* @Last Modified by:   dmyang
+* @Last Modified time: 2016-12-27 20:23:34
 */
 
 'use strict'
@@ -24,7 +24,10 @@ export default function createRoutes(store) {
         component: Layout,
         getChildRoutes(location, cb) {
             require.ensure([], require => {
-                cb(null, [require('./account').default(store)])
+                cb(null, [
+                    require('./account').default(store),
+                    require('./project').default(store)
+                ])
             })
         },
         indexRoute: {
